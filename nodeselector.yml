@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myngpod
+  labels:
+    app: facebook
+spec:
+  nodeSelector:
+      gpu: "true"
+  containers:
+    - image: nginx
+      name: mynginx
+      ports:
+       - containerPort: 80
