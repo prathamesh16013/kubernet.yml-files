@@ -1,0 +1,15 @@
+to add namespace using manifest file
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod12
+  labels:
+    env: testing
+  namespace: facebook
+spec:
+  containers:
+   - image: nginx
+     ports:
+      - containerPort: 80
+     name: mynginx
