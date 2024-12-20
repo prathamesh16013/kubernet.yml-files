@@ -2,6 +2,14 @@
 different files on kubernets .yml codes
 
 
+
+Kubernet Volumes:
+emptydir
+gitrepo
+hostpath
+nfs
+
+
 * nfs.yml
 create an efs
 add sg of worker node in sg of efs at protocol NFS
