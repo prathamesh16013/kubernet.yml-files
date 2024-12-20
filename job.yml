@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+   name: myjob
+spec:
+  template:
+   metadata:
+     labels:
+       app: myapp
+   spec:
+     restartPolicy: OnFailure
+     containers:
+      - name: mycont
+        image: lukas/batch-job
