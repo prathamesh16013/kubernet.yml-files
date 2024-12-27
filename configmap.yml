@@ -1,0 +1,54 @@
+configpod.yml
+
+apiVersion: v1
+kind: Pod
+metadata:
+   name: mypod
+spec:
+    containers:
+       - image: mysql
+         name: mycont
+         ports: 
+          - containerPort: 3306
+         env:
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+              configMapKeyRef:
+                name: mysql-pass
+                key: MYSQL_ROOT_PASSWORD 
+
+
+configmap1.yml
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+   name: myconfig
+data:
+   MYSQL_ROOT_PASSWORD: Pass@123
+   MYSQL_DATABASE: mydb
+
+
+configpod.yml
+
+apiVersion: v1
+kind: Pod
+metadata:
+   name: mypod1
+spec:
+    containers:
+       - image: mysql
+         name: mycont
+         ports: 
+          - containerPort: 3306
+         env:
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+              configMapKeyRef:
+                name: myconfig
+                key: MYSQL_ROOT_PASSWORD
+          - name: MYSQL_DATABASE
+            valueFrom:
+              configMapKeyRef:
+                name: myconfig
+                key: MYSQL_DATABASE   
